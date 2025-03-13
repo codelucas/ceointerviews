@@ -1,0 +1,88 @@
+# Virtual environments
+venv/
+env/
+myenv/
+.venv/
+.env/
+.myenv/
+
+.pypirc
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.swp
+*.swo
+*.swn
+*.swm
+*.swl
+
+*.jsonl
+
+logs/*.log.*
+
+
+airflow/airflow-webserver.pid
+airflow-webserver.pid
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Python egg metadata
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# macOS files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+# Windows files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# Compiled source files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.db
+*.db/
+
+# Distribution and packaging
+dist/
+build/
+*.egg-info/
+*.egg
+*.tar.gz
+*.whl
+
+# Other files and directories
+.cache/
+.coverage
+.tox/
+.pytest_cache/
+.mypy_cache/
+.venv/
+.env/
+.env
+.myenv/

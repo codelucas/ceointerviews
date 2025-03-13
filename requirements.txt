@@ -1,0 +1,4 @@
+requests>=2.25.0
+urllib3>=1.26.0
+typing-extensions>=4.0.0
+json5>=0.9.6
