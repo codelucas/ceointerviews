@@ -47,10 +47,40 @@ class CEOInterviews:
     def get_entities(
         self,
         keyword: Optional[str] = None,
+        is_snp500: Optional[bool] = None,
+        is_nasdaq: Optional[bool] = None,
+        is_snp1500: Optional[bool] = None,
+        is_nasdaq100: Optional[bool] = None,
+        is_ai_startup: Optional[bool] = None,
+        is_top_startup: Optional[bool] = None,
+        is_usa_based: Optional[bool] = None,
+        is_china_based: Optional[bool] = None,
+        is_europe_based: Optional[bool] = None,
+        is_public_company: Optional[bool] = None,
         page_num: int = 1,
         page_size: int = DEFAULT_PAGE_SIZE,
     ) -> APIResults:
         params = {"keyword": keyword, "page_num": page_num, "page_size": page_size}
+
+        if is_snp500 is not None:
+            params["is_snp500"] = str(is_snp500).lower()
+        if is_nasdaq is not None:
+            params["is_nasdaq"] = str(is_nasdaq).lower()
+        if is_snp1500 is not None:
+            params["is_snp1500"] = str(is_snp1500).lower()
+        if is_nasdaq100 is not None:
+            params["is_nasdaq100"] = str(is_nasdaq100).lower()
+        if is_ai_startup is not None:
+            params["is_ai_startup"] = str(is_ai_startup).lower()
+        if is_top_startup is not None:
+            params["is_top_startup"] = str(is_top_startup).lower()
+        if is_usa_based is not None:
+            params["is_usa_based"] = str(is_usa_based).lower()
+        if is_china_based is not None:
+            params["is_china_based"] = str(is_china_based).lower()
+        if is_europe_based is not None:
+            params["is_europe_based"] = str(is_europe_based).lower()
+
         url = f"{self.base_url}/api/get_entities/?{urlencode(params)}"
         response = requests.get(url, headers=self.headers)
 
@@ -95,6 +125,16 @@ class CEOInterviews:
     def get_companies(
         self,
         keyword: Optional[str] = None,
+        is_snp500: Optional[bool] = None,
+        is_nasdaq: Optional[bool] = None,
+        is_snp1500: Optional[bool] = None,
+        is_nasdaq100: Optional[bool] = None,
+        is_ai_startup: Optional[bool] = None,
+        is_top_startup: Optional[bool] = None,
+        is_usa_based: Optional[bool] = None,
+        is_china_based: Optional[bool] = None,
+        is_europe_based: Optional[bool] = None,
+        is_public_company: Optional[bool] = None,
         page_num: int = 1,
         page_size: int = DEFAULT_PAGE_SIZE,
     ) -> APIResults:
@@ -113,6 +153,31 @@ class CEOInterviews:
         }
         if keyword:
             params["keyword"] = keyword
+
+        if is_snp500 is not None:
+            params["is_snp500"] = str(is_snp500).lower()
+        if is_nasdaq is not None:
+            params["is_nasdaq"] = str(is_nasdaq).lower()
+        if is_snp1500 is not None:
+            params["is_snp1500"] = str(is_snp1500).lower()
+        if is_nasdaq100 is not None:
+            params["is_nasdaq100"] = str(is_nasdaq100).lower()
+        if is_ai_startup is not None:
+            params["is_ai_startup"] = str(is_ai_startup).lower()
+        if is_top_startup is not None:
+            params["is_top_startup"] = str(is_top_startup).lower()
+        if is_usa_based is not None:
+            params["is_usa_based"] = str(is_usa_based).lower()
+        if is_china_based is not None:
+            params["is_china_based"] = str(is_china_based).lower()
+        if is_europe_based is not None:
+            params["is_europe_based"] = str(is_europe_based).lower()
+
+        if is_public_company is not None:
+            params["is_snp500"] = "true" if is_public_company else "false"
+            params["is_nasdaq"] = "true" if is_public_company else "false"
+            params["is_snp1500"] = "true" if is_public_company else "false"
+            params["is_nasdaq100"] = "true" if is_public_company else "false"
 
         url = f"{self.base_url}/api/get_companies/"
         response = requests.get(url, params=params, headers=self.headers)
@@ -134,6 +199,7 @@ class CEOInterviews:
         is_notable: Optional[bool] = None,
         is_controversial: Optional[bool] = None,
         is_financial_policy: Optional[bool] = None,
+        company_id: Optional[int] = None,
         page_num: int = 1,
         page_size: int = DEFAULT_PAGE_SIZE,
     ) -> APIResults:
@@ -145,6 +211,7 @@ class CEOInterviews:
             is_notable: Filter by notable quotes
             is_controversial: Filter by controversial quotes
             is_financial_policy: Filter by financial policy quotes
+            company_id: Filter by company ID
             page_num: Page number for pagination (default: 1)
             page_size: Number of results per page (default: 10)
 
@@ -173,6 +240,9 @@ class CEOInterviews:
 
         if is_financial_policy is not None:
             params["is_financial_policy"] = str(is_financial_policy).lower()
+
+        if company_id is not None:
+            params["company_id"] = company_id
 
         url = f"{self.base_url}/api/get_quotes/"
         response = requests.get(url, params=params, headers=self.headers)
