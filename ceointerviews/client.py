@@ -62,6 +62,8 @@ class CEOInterviews:
     ) -> APIResults:
         params = {"keyword": keyword, "page_num": page_num, "page_size": page_size}
 
+        if is_public_company is not None:
+            params["is_public_company"] = str(is_public_company).lower()
         if is_snp500 is not None:
             params["is_snp500"] = str(is_snp500).lower()
         if is_nasdaq is not None:
@@ -174,10 +176,7 @@ class CEOInterviews:
             params["is_europe_based"] = str(is_europe_based).lower()
 
         if is_public_company is not None:
-            params["is_snp500"] = "true" if is_public_company else "false"
-            params["is_nasdaq"] = "true" if is_public_company else "false"
-            params["is_snp1500"] = "true" if is_public_company else "false"
-            params["is_nasdaq100"] = "true" if is_public_company else "false"
+            params["is_public_company"] = str(is_public_company).lower()
 
         url = f"{self.base_url}/api/get_companies/"
         response = requests.get(url, params=params, headers=self.headers)
